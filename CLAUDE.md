@@ -1,4 +1,4 @@
-# WanderLore — GenAI Destination Discovery & Cultural Experiences
+# Wanderland — GenAI Destination Discovery & Cultural Experiences
 
 Hackathon build (hack2Skill PromptWars). Problem statement: help travelers discover
 destinations and engage with local culture using GenAI — attractions, hidden gems,

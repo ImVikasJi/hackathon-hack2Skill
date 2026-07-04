@@ -1,4 +1,4 @@
-# WanderLore — GenAI Destination Discovery & Cultural Experiences
+# Wanderland — GenAI Destination Discovery & Cultural Experiences
 
 Built for the hack2Skill PromptWars challenge: *Destination Discovery & Cultural Experiences*.
 Enter a destination and your interests; Gemini generates must-see attractions, hidden gems,
