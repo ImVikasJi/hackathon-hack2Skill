@@ -1,4 +1,46 @@
-# MainChallenge
+# WanderLore — GenAI Destination Discovery & Cultural Experiences
+
+Built for the hack2Skill PromptWars challenge: *Destination Discovery & Cultural Experiences*.
+Enter a destination and your interests; Gemini generates must-see attractions, hidden gems,
+an immersive story, local events, and authentic cultural experiences with etiquette tips.
+Discoveries are saved to your account (Supabase) so you can revisit them later.
+
+**Stack:** Angular 22 (standalone, signals) · Tailwind CSS v4 · Supabase (auth + Postgres) ·
+Gemini 2.5 Flash (structured JSON output) · deployed on Vercel.
+
+The Gemini API key is never sent to the browser. The Angular app calls a
+Supabase Edge Function (`supabase/functions/discover`), which holds the key
+as a server-side secret and proxies the Gemini request.
+
+## Setup
+
+1. `npm install`
+2. Create a Supabase project, then run `supabase/schema.sql` in its SQL editor
+   (creates the `discoveries` table with row-level security).
+3. Deploy the edge function and set its secret (requires the
+   [Supabase CLI](https://supabase.com/docs/guides/cli)):
+   ```bash
+   supabase login
+   supabase link --project-ref YOUR_PROJECT_REF
+   supabase secrets set GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+   supabase functions deploy discover
+   ```
+4. Copy `src/environments/environment.example.ts` to
+   `src/environments/environment.ts` and fill in `supabaseUrl` /
+   `supabaseAnonKey` from Supabase project settings → API. (No Gemini key
+   goes here — see above.)
+5. `npm start` → http://localhost:4200
+
+## Deploying to Vercel
+
+Set `SUPABASE_URL` and `SUPABASE_ANON_KEY` as environment variables in the
+Vercel project settings. The `prebuild` script (`scripts/set-env.js`)
+generates `environment.ts`/`environment.prod.ts` from those vars at build
+time, so no secrets need to be committed to git. `GEMINI_API_KEY` is set once
+on Supabase (step 3 above), not on Vercel — it's never part of the frontend
+build.
+
+---
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.0.
 

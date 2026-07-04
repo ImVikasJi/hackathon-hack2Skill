@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/main-challenge/browser",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

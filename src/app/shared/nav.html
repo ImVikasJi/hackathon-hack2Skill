@@ -1,0 +1,24 @@
+<header class="bg-teal-900 text-white">
+  <nav
+    class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3"
+    aria-label="Primary"
+  >
+    <a routerLink="/discover" class="font-bold text-base sm:text-lg tracking-tight whitespace-nowrap">
+      🧭 WanderLore
+    </a>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:gap-x-4 text-sm">
+      <a routerLink="/discover" class="hover:text-amber-300 transition-colors">Discover</a>
+      <a routerLink="/history" class="hover:text-amber-300 transition-colors">History</a>
+      @if (auth.user()?.email) {
+        <span class="hidden md:inline text-teal-200 truncate max-w-[10rem]">{{ auth.user()?.email }}</span>
+      }
+      <button
+        type="button"
+        (click)="signOut()"
+        class="rounded-lg bg-teal-800 px-3 py-1.5 hover:bg-teal-700 transition-colors"
+      >
+        Sign out
+      </button>
+    </div>
+  </nav>
+</header>
